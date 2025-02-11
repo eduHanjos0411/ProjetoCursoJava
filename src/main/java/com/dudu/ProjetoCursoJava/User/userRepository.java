@@ -1,7 +1,7 @@
 package com.dudu.ProjetoCursoJava.User;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface userRepository extends JpaRepository<User,Long>{
-    
+public interface UserRepository extends CrudRepository<User, Long>{
+
 }

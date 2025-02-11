@@ -15,17 +15,30 @@ import lombok.Setter;
 @Entity
 @Table(name="tb_user")
 public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String name;
     private String email;
     private String password;
-    private String phone;
-    
+    private String phone;    
+
     public User() {
     }
+
+
+
+    public User(String name, String email, String password, String phone) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+    }
+
+
 
     public User(long id, String name, String email, String password, String phone) {
         super();
