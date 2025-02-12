@@ -1,22 +1,28 @@
 package com.dudu.ProjetoCursoJava.User;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.dudu.ProjetoCursoJava.Order.Order;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Setter;
 
-@Getter @Setter @EqualsAndHashCode 
+
+@Data
 @Entity
 @Table(name="tb_user")
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User{
 
+    //instance of Id and autogenerate it on database
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -25,6 +31,11 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String phone;    
+
+    //not generate setter for the collection colletion
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy ="client")
+    private List<Order> orders = new ArrayList<Order>();
 
     public User() {
     }
