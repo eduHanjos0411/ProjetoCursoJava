@@ -1,6 +1,5 @@
 package com.dudu.ProjetoCursoJava.User;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

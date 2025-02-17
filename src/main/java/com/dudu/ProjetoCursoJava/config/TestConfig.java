@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Profile;
 import com.dudu.ProjetoCursoJava.Order.Order;
 import com.dudu.ProjetoCursoJava.Order.OrderRepository;
 import com.dudu.ProjetoCursoJava.Order.OrderStatus;
+import com.dudu.ProjetoCursoJava.Product.Product;
+import com.dudu.ProjetoCursoJava.Product.ProductRepository;
 import com.dudu.ProjetoCursoJava.User.User;
 import com.dudu.ProjetoCursoJava.User.UserRepository;
 import com.dudu.ProjetoCursoJava.category.Category;
@@ -28,14 +30,28 @@ public class TestConfig implements CommandLineRunner{
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public void run(String... args) throws Exception {
+
+        
 
         Category cat1 = new Category(null, "Electronics");
         Category cat2 = new Category(null, "Books");
         Category cat3 = new Category(null, "Computers"); 
 
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
+        Product p1 = new Product("The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+        Product p2 = new Product("Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+        Product p3 = new Product("Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+        Product p4 = new Product("PC Gamer", "Donec aliquet odio ac rhoncus cursus", 1200.0, "");
+        Product p5 = new Product("Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
+
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
 
 
         User u1 = new User("Maria", "maria@gmail.com", "1234578", "99999912");
