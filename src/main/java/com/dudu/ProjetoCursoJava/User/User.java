@@ -33,7 +33,7 @@ public class User{
     private String password;
     private String phone;    
 
-    //not generate setter for the collection colletion
+    //not generate setter for the collection collection
     @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy ="client")
     @JsonIgnore
