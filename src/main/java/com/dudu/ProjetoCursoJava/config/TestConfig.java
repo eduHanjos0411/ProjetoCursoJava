@@ -13,6 +13,8 @@ import com.dudu.ProjetoCursoJava.Order.OrderRepository;
 import com.dudu.ProjetoCursoJava.Order.OrderStatus;
 import com.dudu.ProjetoCursoJava.User.User;
 import com.dudu.ProjetoCursoJava.User.UserRepository;
+import com.dudu.ProjetoCursoJava.category.Category;
+import com.dudu.ProjetoCursoJava.category.CategoryRepository;
 
 @Configuration @Profile("test")
 public class TestConfig implements CommandLineRunner{
@@ -23,8 +25,18 @@ public class TestConfig implements CommandLineRunner{
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
+
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers"); 
+
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
 
         User u1 = new User("Maria", "maria@gmail.com", "1234578", "99999912");
         User u2 = new User("Alex", "alex@gmail.com", "87654321", "7654321");
