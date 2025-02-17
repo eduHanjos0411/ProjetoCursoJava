@@ -3,6 +3,7 @@ package com.dudu.ProjetoCursoJava.Order;
 import java.time.Instant;
 
 import com.dudu.ProjetoCursoJava.User.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +21,8 @@ public class Order {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
 
     @ManyToOne
@@ -29,7 +32,18 @@ public class Order {
     public Order() {
     }
 
+    
+
+    public Order(Instant moment, User client) {
+        super();
+        this.moment = moment;
+        this.client = client;
+    }
+
+
+
     public Order(Long id, Instant moment, User client) {
+        super();
         this.id = id;
         this.moment = moment;
         this.client = client;

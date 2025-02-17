@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dudu.ProjetoCursoJava.Order.Order;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +36,7 @@ public class User{
     //not generate setter for the collection colletion
     @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy ="client")
+    @JsonIgnore
     private List<Order> orders = new ArrayList<Order>();
 
     public User() {
